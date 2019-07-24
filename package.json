@@ -1,0 +1,27 @@
+{
+  "name": "yu-gi-ho_service",
+  "version": "1.0.0",
+  "description": "servizio per le carte yugiho",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrea Franco (Krauser)",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "path": "^0.12.7",
+    "sha1": "^1.1.1",
+    "sqlite3": "^4.0.6",
+    "util": "^0.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
