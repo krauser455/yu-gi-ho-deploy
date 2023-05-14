@@ -3,6 +3,6 @@ const environment = process.env.NODE_ENV === "production"? "production": "produc
 const config = require('./config.json')[environment];
 //console.log(config);
 
-console.log( "DIRECTORY PRINCIPALE: " + process.env)
+console.log( "DIRECTORY PRINCIPALE: " + process.env.PWD)
 
-require('./app/app.js').start( config.dbfile, config.port);
+require('/app/app.js').start( config.dbfile, config.port);
