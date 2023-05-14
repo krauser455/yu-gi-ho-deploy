@@ -44,17 +44,13 @@ app.use(function (req, res, next) {
 });
 
 var publicDir = require('path').join(__dirname,'/cards_images');
+var deployDir = require("path").join(__dirname,"/dist/Yu-gi-ho-app") // for angular deploy
 app.use(express.static(publicDir));
+app.use(express.static(deployDir)); // for angular deploy
 
-app.use(express.static(__dirname + '/dist/Yu-gi-ho-app'));
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/login', '/register', '/allcards', '/envelope/all', '/recipes', /^\/singlecard\/.*/, /^\/ricetta\/.*/, /^\/comments\/recipe\/.*/, /^\/comments\/recipe\/.*\/user\/.*/, /^\/recipes\/.*\/user/, '/api/upload' , publicDir, deployDir]}));
 
-app.use(expressJwt({secret: 'todo-app-super-shared-secret'})
-.unless({path: ['/login', '/register', '/allcards', '/envelope/all', '/recipes', 
-/^\/singlecard\/.*/, /^\/ricetta\/.*/, /^\/comments\/recipe\/.*/, 
-/^\/comments\/recipe\/.*\/user\/.*/, /^\/recipes\/.*\/user/,  publicDir]}));
-
-app.post('/api/upload',upload.single('photo'), function (req, res) {
+app.post('/api/upload', upload.single('photo'), function(req, res) {
     if (!req.file) {
         console.log("No file received");
         return res.send({
@@ -67,6 +63,10 @@ app.post('/api/upload',upload.single('photo'), function (req, res) {
           success: true
         })
       }
+});
+
+app.get('/', (req,res) => { // for angular deploy
+  res.sendFile(deployDir+"/index.html")
 });
 
 /*
