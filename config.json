@@ -5,6 +5,6 @@
   },
   "production": {
     "dbfile": "./data/dbcards.sqlite",
-    "port": 3333
+    "port": 3000
   }
 }
