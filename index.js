@@ -5,4 +5,4 @@ const config = require('./config.json')[environment];
 
 console.log( "DIRECTORY PRINCIPALE: " + process.env.PWD)
 
-require('./apps/app').start( config.dbfile, config.port);
+require('/app/apps/app').start( config.dbfile, config.port);
