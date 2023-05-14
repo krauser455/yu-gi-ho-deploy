@@ -23,7 +23,7 @@
   },
   "engines": {
     "node": "v14.21.3"
-  }
+  },
   "devDependencies": {
     "nodemon": "^2.0.22"
   }
