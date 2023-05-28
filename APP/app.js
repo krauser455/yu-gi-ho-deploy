@@ -460,6 +460,6 @@ module.exports.start = function(dbfile, port) {
   db.connect(dbfile,  (err) => {
       if (err) throw err;
       console.log("Database connected.")
-      app.listen(port, () => console.log("Listenting on port " + port));
+      app.listen(port, "0.0.0.0", () => console.log("Listenting on port " + port));
   });
 }
