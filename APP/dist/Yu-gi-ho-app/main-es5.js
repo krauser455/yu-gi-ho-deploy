@@ -4039,7 +4039,7 @@
           value: function Load_All_Cards() {
             var _this4 = this;
 
-            var url = "http://localhost:8000/allcards";
+            var url = "http://0.0.0.0:3000/allcards";
             this.http.get(url).subscribe(function (data) {
               _this4.dati_carte = data;
             });

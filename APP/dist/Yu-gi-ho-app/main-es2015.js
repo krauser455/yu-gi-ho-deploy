@@ -1931,7 +1931,7 @@ class DatiService {
         this.typedeck = [];
     }
     Load_All_Cards() {
-        let url = "http://localhost:8000/allcards";
+        let url = "http://0.0.0.0:3000/allcards";
         this.http.get(url).subscribe((data) => {
             this.dati_carte = data;
         });
