@@ -7821,7 +7821,7 @@
 
       var _environment = {
         production: false,
-        url: "https://0.0.0.0:3000" //url: "http://0.0.0.0:3000"
+        url: "https://yu-gi-ho-deploy-production.up.railway.app" //url: "http://0.0.0.0:3000"
         //url: "http://localhost:8000"
 
       };

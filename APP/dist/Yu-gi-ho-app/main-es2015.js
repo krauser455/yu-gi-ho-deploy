@@ -3763,7 +3763,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    url: "https://0.0.0.0:3000"
+    url: "https://yu-gi-ho-deploy-production.up.railway.app"
     //url: "http://0.0.0.0:3000"
     //url: "http://localhost:8000"
 };
