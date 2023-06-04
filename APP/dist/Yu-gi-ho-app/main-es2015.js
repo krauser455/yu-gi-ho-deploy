@@ -1758,7 +1758,7 @@ function CardlistComponent_table_14_tr_17_Template(rf, ctx) { if (rf & 1) {
     const card_r4 = ctx.$implicit;
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate"]("src", card_r4.img.replace("http:localhost:8000", ctx_r3.environment.url), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate"]("src", card_r4.img.replace("http://localhost:8000", ctx_r3.environment.url), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](card_r4.cod);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
