@@ -4005,19 +4005,25 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ../environments/environment */
+      2340);
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
       7716);
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common/http */
       1841);
       /* harmony import */
 
 
-      var _auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! ./auth.service */
       2891);
 
@@ -4039,7 +4045,7 @@
           value: function Load_All_Cards() {
             var _this4 = this;
 
-            var url = "http://0.0.0.0:3000/allcards";
+            var url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/allcards";
             this.http.get(url).subscribe(function (data) {
               _this4.dati_carte = data;
             });
@@ -4171,10 +4177,10 @@
       }();
 
       _DatiService.ɵfac = function DatiService_Factory(t) {
-        return new (t || _DatiService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_auth_service__WEBPACK_IMPORTED_MODULE_0__.AuthService));
+        return new (t || _DatiService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_auth_service__WEBPACK_IMPORTED_MODULE_1__.AuthService));
       };
 
-      _DatiService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      _DatiService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
         token: _DatiService,
         factory: _DatiService.ɵfac,
         providedIn: 'root'
@@ -7802,7 +7808,9 @@
 
 
       var _environment = {
-        production: false
+        production: false,
+        url: "http://0.0.0.0:3000" //url: "http://localhost:8000"
+
       };
       /*
        * For easier debugging in development mode, you can import the following file
