@@ -1277,9 +1277,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AuthService": function() { return /* binding */ AuthService; }
 /* harmony export */ });
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @auth0/angular-jwt */ 5036);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 8002);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 1841);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 8002);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 1841);
+
 
 
 
@@ -1293,7 +1295,7 @@ class AuthService {
         this.datasend = null;
     }
     registeruser() {
-        let url = "http://localhost:8000/register";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url + "/register";
         let users = {};
         users["nome"] = this.inputnome;
         users["cognome"] = this.inputcognome;
@@ -1311,8 +1313,8 @@ class AuthService {
         });
     }
     login(email, password) {
-        return this.http.post('http://localhost:8000/login', { pass: password, email: email })
-            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)(result => {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.url + '/login', { pass: password, email: email })
+            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.map)(result => {
             localStorage.setItem('access_token', result.token);
             localStorage.setItem('token_decoded_userid', this.helper.decodeToken(localStorage.getItem('access_token')).userID);
             return true;
@@ -1343,8 +1345,8 @@ class AuthService {
         return this.helper.decodeToken(localStorage.getItem('access_token')).Email;
     }
 }
-AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient)); };
-AuthService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: AuthService, factory: AuthService.ɵfac, providedIn: 'root' });
+AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient)); };
+AuthService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ token: AuthService, factory: AuthService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -1946,9 +1948,9 @@ class DatiService {
             qnt: this.quantity[index],
             type: this.typedeck[index],
         };
-        let url = "http://localhost:8000/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.carta_selezionata.type;
-        let url2 = "http://localhost:8000/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod;
-        let url3 = "http://localhost:8000/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.carta_selezionata.type;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.carta_selezionata.type;
+        let url2 = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod;
+        let url3 = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.carta_selezionata.type;
         if (this.carta_selezionata.qnt != null && this.carta_selezionata.type != null) {
             this.http.get(url).subscribe((data) => {
                 console.log(data.card.cod_fk);
@@ -1971,7 +1973,7 @@ class DatiService {
         }
     }
     getCard(codice) {
-        let url = "http://localhost:8000/singlecard/" + codice;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/singlecard/" + codice;
         this.http.get(url).subscribe((data) => {
             this.single_card = data;
         });
@@ -1980,13 +1982,13 @@ class DatiService {
     deleteCardfromdeck(card, index) {
         this.dati_carte_utente["cards"].splice(index, 1);
         this.card = card;
-        let url = "http://localhost:8000/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.card.type;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/users/" + localStorage.getItem("token_decoded_userid") + "/cards/" + this.card.cod + "/type/" + this.card.type;
         this.http.delete(url).subscribe((data) => {
             console.info("Rimozione effetuata con successo");
         });
     }
     CardsLoggedUser() {
-        let url = "http://localhost:8000/users/" + localStorage.getItem("token_decoded_userid") + "/cards";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/users/" + localStorage.getItem("token_decoded_userid") + "/cards";
         return this.http.get(url).subscribe((data) => {
             this.dati_carte_utente = data;
             //let a = data.cards[0].type;
@@ -1994,14 +1996,14 @@ class DatiService {
     }
     ;
     ListofEnvelopes() {
-        let url = "http://localhost:8000/envelope/all";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/envelope/all";
         this.http.get(url).subscribe((data) => {
             this.buste_espansione = data;
         });
     }
     ;
     AddCardToList() {
-        let url = "http://localhost:8000/cards";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/cards";
         let card = {};
         card["cod"] = this.inputcod;
         card["nome"] = this.inputnome;
@@ -2022,7 +2024,7 @@ class DatiService {
         alert("nuova carta aggiunta con successo!");
     }
     AddEnvelope() {
-        let url = "http://localhost:8000/envelope";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/envelope";
         let envelope = {};
         envelope["nome"] = this.inputenvelopename;
         envelope["anno"] = this.inputenvelopeyear;
@@ -2032,7 +2034,7 @@ class DatiService {
         alert("nuova busta aggiunta con successo!");
     }
     AddCardToEnvelope() {
-        let url = "http://localhost:8000/cards/" + this.inputcodcard + "/envelope/" + this.inputcodenvelope;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/cards/" + this.inputcodcard + "/envelope/" + this.inputcodenvelope;
         this.http.post(url, url).subscribe((data) => { });
         alert("Relazione aggiunta con successo!");
     }
@@ -3383,9 +3385,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RecipesService": function() { return /* binding */ RecipesService; }
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 1841);
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth.service */ 2891);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 1841);
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ 2891);
+
 
 
 
@@ -3404,7 +3408,7 @@ class RecipesService {
         if (!desc) {
             return;
         }
-        let url = "http://localhost:8000/ricetta/user/" + localStorage.getItem("token_decoded_userid");
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/ricetta/user/" + localStorage.getItem("token_decoded_userid");
         let recipe = {};
         recipe["nomeric"] = name;
         recipe["desc"] = desc;
@@ -3413,7 +3417,7 @@ class RecipesService {
         });
     }
     Getrecipe(id) {
-        let url = "http://localhost:8000/ricetta/" + id;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/ricetta/" + id;
         this.http.get(url).subscribe((data) => {
             this.singleric = data;
         });
@@ -3434,14 +3438,14 @@ class RecipesService {
       console.log(this.sidedeck[0]);
     }*/
     Getallallrecipes() {
-        let url = "http://localhost:8000/recipes";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/recipes";
         this.http.get(url).subscribe((data) => {
             this.allric = data;
         });
         return this.allric;
     }
     Getrecipesidofuser() {
-        let url = "http://localhost:8000/recipes/" + localStorage.getItem("token_decoded_userid") + "/user";
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/recipes/" + localStorage.getItem("token_decoded_userid") + "/user";
         this.http.get(url).subscribe((data) => {
             this.recipesid = data;
         });
@@ -3459,7 +3463,7 @@ class RecipesService {
         }
     }
     Addcomment(id, desc) {
-        let url = "http://localhost:8000/comments/user/" + localStorage.getItem("token_decoded_userid") + "/ricetta/" + id;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/comments/user/" + localStorage.getItem("token_decoded_userid") + "/ricetta/" + id;
         let comment = {};
         comment["desc"] = desc;
         this.user_comment = {
@@ -3479,34 +3483,34 @@ class RecipesService {
         alert("commento pubblicato!");
     }
     Getrecipescomments(id) {
-        let url = "http://localhost:8000/comments/recipe/" + id;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/comments/recipe/" + id;
         this.http.get(url).subscribe((data) => {
             this.all_comment = data;
         });
     }
     Getrecipescommentsids(id, iduser) {
-        let url = "http://localhost:8000/comments/recipe/" + id + "/user/" + iduser;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/comments/recipe/" + id + "/user/" + iduser;
         this.http.get(url).subscribe((data) => {
             this.all_comment_ids = data;
         });
     }
     DeleteRecipe(idrecipe, index) {
         this.allric["recipes"].splice(index, 1);
-        let url = "http://localhost:8000/recipe/" + idrecipe;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/recipe/" + idrecipe;
         this.http.delete(url).subscribe((data) => {
             console.log(data);
         });
     }
     DeleteComment(idcomment, index) {
         this.all_comment["comments"].splice(index, 1);
-        let url = "http://localhost:8000/comment/" + idcomment;
+        let url = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.url + "/comment/" + idcomment;
         this.http.delete(url).subscribe((data) => {
             console.log(data);
         });
     }
 }
-RecipesService.ɵfac = function RecipesService_Factory(t) { return new (t || RecipesService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_auth_service__WEBPACK_IMPORTED_MODULE_0__.AuthService)); };
-RecipesService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: RecipesService, factory: RecipesService.ɵfac, providedIn: 'root' });
+RecipesService.ɵfac = function RecipesService_Factory(t) { return new (t || RecipesService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_auth_service__WEBPACK_IMPORTED_MODULE_1__.AuthService)); };
+RecipesService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: RecipesService, factory: RecipesService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
