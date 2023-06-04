@@ -3763,7 +3763,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    url: "http://0.0.0.0:3000"
+    url: "https://0.0.0.0:3000"
+    //url: "http://0.0.0.0:3000"
     //url: "http://localhost:8000"
 };
 /*
